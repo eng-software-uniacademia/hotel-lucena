@@ -26,6 +26,7 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.FillPatternType;
+import org.apache.poi.ss.usermodel.IndexedColors;
 
 /**
  *
@@ -68,7 +69,7 @@ public class ConsultaUsuariosBean {
         HSSFRow header = sheet.getRow(0);
 
         HSSFCellStyle cellStyle = wb.createCellStyle();
-        cellStyle.setFillForegroundColor(HSSFColor.GREEN.index);
+        cellStyle.setFillForegroundColor(IndexedColors.GREEN.getIndex());
         cellStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
 
         for (int i = 0; i < header.getPhysicalNumberOfCells(); i++) {
