@@ -9,7 +9,7 @@ public class PersistenceUtil {
 
     private static final String PERSISTENCE_UNIT_NAME = "HotelLucena";
     private static EntityManagerFactory FACTORY;
-    private static ThreadLocal<EntityManager> MANAGER = new ThreadLocal<EntityManager>();
+    private static final ThreadLocal<EntityManager> MANAGER = new ThreadLocal<>();
     private static Session session;
 
     static {
@@ -39,7 +39,7 @@ public class PersistenceUtil {
         if (em != null) {
             em.close();
         }
-        MANAGER.set(null);
+        MANAGER.remove();
     }
 
     public static Session getSession() {
