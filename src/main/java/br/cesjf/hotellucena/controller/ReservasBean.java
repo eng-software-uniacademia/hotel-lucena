@@ -42,7 +42,7 @@ public class ReservasBean {
 
 
     //Métodos dos botões 
-    public void record(ActionEvent actionEvent) {
+    public void save() {
         Reservas r = new Reservas();
         Duration duracao = Duration.between(reserva.getDataEntrada().toInstant(), reserva.getDataSaida().toInstant());
         /*reservas = new ReservasDAO().buscarAtivos();
@@ -69,19 +69,19 @@ public class ReservasBean {
         //}
     }
 
-    public void exclude(ActionEvent actionEvent) {
+    public void exclude() {
         new ReservasDAO().remover(reserva);
         reservas = new ReservasDAO().buscarAtivos();
         reserva = new Reservas();
     }
 
-    public void checkin(ActionEvent actionEvent) {
+    public void checkin() {
         new ReservasDAO().checkin(reserva.getCodigoReserva());
         reservas = new ReservasDAO().buscarAtivos();
         reserva = new Reservas();
     }
 
-    public void checkout(ActionEvent actionEvent) {
+    public void checkout() {
         new ReservasDAO().checkout(reserva.getCodigoReserva());
         reservas = new ReservasDAO().buscarAtivos();
         reserva = new Reservas();

@@ -7,9 +7,6 @@ package br.cesjf.hotellucena.controller;
 
 import br.cesjf.hotellucena.dao.ReservasDAO;
 import br.cesjf.hotellucena.model.Reservas;
-
-import javax.faces.event.ActionEvent;
-
 import com.lowagie.text.BadElementException;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
@@ -44,7 +41,7 @@ public class ConsultasReservasBean {
 
     //Métodos dos botões
     @SuppressWarnings("unused")
-    public void record(ActionEvent actionEvent) {
+    public void save() {
         Reservas r = new Reservas();
         Duration duracao = Duration.between(reserva.getDataEntrada().toInstant(), reserva.getDataSaida().toInstant());
         /*reservas = new ReservasDAO().buscarAtivos();
@@ -71,19 +68,19 @@ public class ConsultasReservasBean {
         //}
     }
 
-    public void exclude(ActionEvent actionEvent) {
+    public void exclude() {
         new ReservasDAO().remover(reserva);
         reservas = new ReservasDAO().buscarAtivos();
         reserva = new Reservas();
     }
 
-    public void checkin(ActionEvent actionEvent) {
+    public void checkin() {
         new ReservasDAO().checkin(reserva.getCodigoReserva());
         reservas = new ReservasDAO().buscarAtivos();
         reserva = new Reservas();
     }
 
-    public void checkout(ActionEvent actionEvent) {
+    public void checkout() {
         new ReservasDAO().checkout(reserva.getCodigoReserva());
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Check out", "Saída Concluída"));
         reservas = new ReservasDAO().buscarAtivos();

@@ -38,13 +38,13 @@ public class UsuariosBean {
     List<Usuarios> usuarios = new UsuariosDAO().buscarTodas();
 
     //Métodos dos botões 
-    public void record(ActionEvent actionEvent) {
+    public void save() {
         new UsuariosDAO().persistir(usuario);
         usuarios = new UsuariosDAO().buscarTodas();
         usuario = new Usuarios();
     }
 
-    public void exclude(ActionEvent actionEvent) {
+    public void exclude() {
         new UsuariosDAO().remover(usuario);
         usuarios = new UsuariosDAO().buscarTodas();
         usuario = new Usuarios();

@@ -7,11 +7,7 @@ package br.cesjf.hotellucena.controller;
 
 import br.cesjf.hotellucena.dao.CategoriaDAO;
 import br.cesjf.hotellucena.model.Categoria;
-
 import javax.faces.bean.ViewScoped;
-import javax.faces.event.ActionEvent;
-
-import com.lowagie.text.BadElementException;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.PageSize;
@@ -31,6 +27,7 @@ import org.apache.poi.ss.usermodel.IndexedColors;
  * @author tassio
  */
 @ManagedBean(name = "categoriasBean")
+@SuppressWarnings("unused")
 @ViewScoped
 public class CategoriaBean {
 
@@ -39,14 +36,13 @@ public class CategoriaBean {
     List<Categoria> categorias = new CategoriaDAO().buscarTodas();
 
     //Métodos dos botões
-    @SuppressWarnings("unused")
-    public void record(ActionEvent actionEvent) {
+    public void save() {
         new CategoriaDAO().persistir(categoria);
         categorias = new CategoriaDAO().buscarTodas();
         categoria = new Categoria();
     }
 
-    public void exclude(ActionEvent actionEvent) {
+    public void exclude() {
         new CategoriaDAO().remover(categoria);
         categorias = new CategoriaDAO().buscarTodas();
         categoria = new Categoria();
