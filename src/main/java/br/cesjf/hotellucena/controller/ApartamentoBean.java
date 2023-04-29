@@ -32,7 +32,7 @@ public class ApartamentoBean {
 
     //Métodos dos botões
     @SuppressWarnings("unused")
-    public void save() {
+    public void add() {
         new ApartamentoDAO().persistir(apartamento);
         apartamentos = new ApartamentoDAO().buscarTodas();
         apartamento = new Apartamento();
@@ -64,7 +64,6 @@ public class ApartamentoBean {
 
         for (int i = 0; i < header.getPhysicalNumberOfCells(); i++) {
             HSSFCell cell = header.getCell(i);
-
             cell.setCellStyle(cellStyle);
         }
     }
