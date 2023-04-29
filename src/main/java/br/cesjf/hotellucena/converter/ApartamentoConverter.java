@@ -23,7 +23,7 @@ public class ApartamentoConverter implements Converter {
     @Override
     public Object getAsObject(FacesContext fc, UIComponent uic, String value) {
         if (value != null && !value.isEmpty()) {
-            return (Apartamento) uic.getAttributes().get(value);
+            return uic.getAttributes().get(value);
         }
         return null;
     }
@@ -32,7 +32,7 @@ public class ApartamentoConverter implements Converter {
     public String getAsString(FacesContext fc, UIComponent uic, Object value) {
         if (value instanceof Apartamento) {
             Apartamento pergunta = (Apartamento) value;
-            if (pergunta != null && pergunta instanceof Apartamento && pergunta.getIdApartamento()!= null) {
+            if (pergunta.getIdApartamento() != null) {
                 uic.getAttributes().put(pergunta.getIdApartamento().toString(), pergunta);
                 return pergunta.getIdApartamento().toString();
             }

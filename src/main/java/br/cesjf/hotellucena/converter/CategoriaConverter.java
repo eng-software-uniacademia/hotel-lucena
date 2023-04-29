@@ -23,7 +23,7 @@ public class CategoriaConverter implements Converter {
     @Override
     public Object getAsObject(FacesContext fc, UIComponent uic, String value) {
         if (value != null && !value.isEmpty()) {
-            return (Categoria) uic.getAttributes().get(value);
+            return uic.getAttributes().get(value);
         }
         return null;
     }
@@ -32,7 +32,7 @@ public class CategoriaConverter implements Converter {
     public String getAsString(FacesContext fc, UIComponent uic, Object value) {
         if (value instanceof Categoria) {
             Categoria pergunta = (Categoria) value;
-            if (pergunta != null && pergunta instanceof Categoria && pergunta.getCodigoCategoria() != null) {
+            if (pergunta.getCodigoCategoria() != null) {
                 uic.getAttributes().put(pergunta.getCodigoCategoria().toString(), pergunta);
                 return pergunta.getCodigoCategoria().toString();
             }

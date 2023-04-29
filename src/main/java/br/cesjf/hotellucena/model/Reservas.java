@@ -10,7 +10,6 @@ import br.cesjf.hotellucena.dao.ApartamentoDAO;
 import br.cesjf.hotellucena.dao.ReservasDAO;
 import java.io.Serializable;
 import java.time.Duration;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
@@ -179,7 +178,7 @@ public class Reservas extends ServicosExtras implements Serializable {
 
     @Override
     public Double camaExtra(Reservas reserva) {
-        Double total = new Double(0);
+        double total;
 
         if (reserva.getNumeroHospedes() <= reserva.getApartamentocodigoApartamento().getCategoriacodigoCategoria().getCapacidade()) {
             total = reserva.getApartamentocodigoApartamento().getCategoriacodigoCategoria().getValorDiaria() * 1.0;
@@ -199,17 +198,12 @@ public class Reservas extends ServicosExtras implements Serializable {
 
     public Double totalRecebido() {
 
-        Double total = new Double(0);
+        double total = 0;
 
-        Reservas reserva = new Reservas();
+        List<Reservas> reservas = new ReservasDAO().buscarTodas();
 
-        List reservas = new ArrayList();
-        reservas = new ReservasDAO().buscarTodas();
-
-        for (Object r : reservas) {
-            reserva = (Reservas) r;
+        for (Reservas reserva : reservas) {
             total += reserva.getValorPago();
-
         }
 
         return total;
@@ -220,13 +214,9 @@ public class Reservas extends ServicosExtras implements Serializable {
 
         int total = 0;
 
-        Reservas reserva = new Reservas();
+        List<Reservas> reservas = new ReservasDAO().buscarTodas();
 
-        List reservas = new ArrayList();
-        reservas = new ReservasDAO().buscarTodas();
-
-        for (Object r : reservas) {
-            reserva = (Reservas) r;
+        for (Reservas reserva : reservas) {
             total += reserva.getNumeroHospedes();
 
         }
@@ -240,14 +230,10 @@ public class Reservas extends ServicosExtras implements Serializable {
         int total = 0;
 
         Reservas reserva = new Reservas();
-
-        List reservas = new ArrayList();
-        reservas = new ReservasDAO().buscarAtivos();
+        List<Reservas> reservas = new ReservasDAO().buscarAtivos();
 
         for (Object r : reservas) {
-
             total += 1;
-
         }
 
         return total;
@@ -259,9 +245,7 @@ public class Reservas extends ServicosExtras implements Serializable {
         int total = 0;
 
         Apartamento apartamento = new Apartamento();
-
-        List aps = new ArrayList();
-        aps = new ApartamentoDAO().buscarTodas();
+        List<Apartamento> aps = new ApartamentoDAO().buscarTodas();
 
         for (Object r : aps) {
 
@@ -277,13 +261,9 @@ public class Reservas extends ServicosExtras implements Serializable {
 
         int total = 0;
 
-        Reservas reserva = new Reservas();
+        List<Reservas> reservas = new ReservasDAO().buscarAtivos();
 
-        List reservas = new ArrayList();
-        reservas = new ReservasDAO().buscarAtivos();
-
-        for (Object r : reservas) {
-            reserva = (Reservas) r;
+        for (Reservas reserva : reservas) {
             Date hoje = new Date();
             Duration duracao = Duration.between(hoje.toInstant(), reserva.getDataEntrada().toInstant());
             if (duracao.isZero()) {

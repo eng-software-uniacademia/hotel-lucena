@@ -23,7 +23,7 @@ public class UsuarioConverter implements Converter {
     @Override
     public Object getAsObject(FacesContext fc, UIComponent uic, String value) {
         if (value != null && !value.isEmpty()) {
-            return (Usuarios) uic.getAttributes().get(value);
+            return uic.getAttributes().get(value);
         }
         return null;
     }
@@ -32,7 +32,7 @@ public class UsuarioConverter implements Converter {
     public String getAsString(FacesContext fc, UIComponent uic, Object value) {
         if (value instanceof Usuarios) {
             Usuarios pergunta = (Usuarios) value;
-            if (pergunta != null && pergunta instanceof Usuarios && pergunta.getIdUsuario() != null) {
+            if (pergunta.getIdUsuario() != null) {
                 uic.getAttributes().put(pergunta.getIdUsuario().toString(), pergunta);
                 return pergunta.getIdUsuario().toString();
             }
