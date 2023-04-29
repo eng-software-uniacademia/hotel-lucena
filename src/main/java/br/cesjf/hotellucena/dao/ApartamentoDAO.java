@@ -7,9 +7,6 @@ import javax.persistence.Query;
 import br.cesjf.hotellucena.util.PersistenceUtil;
 
 public class ApartamentoDAO {
-
-    public final ApartamentoDAO usuarioDAO = new ApartamentoDAO();
-
     public Apartamento buscar(String nome) {
         EntityManager em = PersistenceUtil.getEntityManager();
         Query query = em.createQuery("select a from Apartamento a where a.name =:nome ");

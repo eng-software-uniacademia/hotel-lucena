@@ -8,9 +8,6 @@ import br.cesjf.hotellucena.util.PersistenceUtil;
 import java.util.Date;
 
 public class ReservasDAO {
-
-    public final ReservasDAO reservaDAO = new ReservasDAO();
-
     public List<Reservas> buscarReservas(int id) {
         EntityManager em = PersistenceUtil.getEntityManager();
 

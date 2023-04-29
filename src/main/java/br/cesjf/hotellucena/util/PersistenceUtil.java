@@ -8,16 +8,16 @@ import org.eclipse.persistence.sessions.Session;
 public class PersistenceUtil {
 
     private static final String PERSISTENCE_UNIT_NAME = "HotelLucena";
-    private static EntityManagerFactory Factory;
+    private static EntityManagerFactory factory;
     private static final ThreadLocal<EntityManager> MANAGER = new ThreadLocal<>();
     private static Session session;
 
     private PersistenceUtil() { }
 
     static {
-        if (Factory == null) {
+        if (factory == null) {
             try {
-                Factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+                factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
             } catch (Exception e) {
                 throw new ExceptionInInitializerError(e);
             }
@@ -28,7 +28,7 @@ public class PersistenceUtil {
         EntityManager em = MANAGER.get();
 
         if (em == null) {
-            em = Factory.createEntityManager();
+            em = factory.createEntityManager();
             MANAGER.set(em);
         }
         return em;
