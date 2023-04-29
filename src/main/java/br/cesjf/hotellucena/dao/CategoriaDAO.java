@@ -8,11 +8,7 @@ import br.cesjf.hotellucena.util.PersistenceUtil;
 
 public class CategoriaDAO {
 
-    public static final CategoriaDAO usuarioDAO = new CategoriaDAO();
-
-    public static CategoriaDAO getInstance() {
-        return usuarioDAO;
-    }
+    public final CategoriaDAO usuarioDAO = new CategoriaDAO();
 
     public Categoria buscar(String nome) {
         EntityManager em = PersistenceUtil.getEntityManager();

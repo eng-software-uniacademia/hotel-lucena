@@ -9,11 +9,7 @@ import java.util.Date;
 
 public class ReservasDAO {
 
-    public static final ReservasDAO reservaDAO = new ReservasDAO();
-
-    public static ReservasDAO getInstance() {
-        return reservaDAO;
-    }
+    public final ReservasDAO reservaDAO = new ReservasDAO();
 
     public List<Reservas> buscarReservas(int id) {
         EntityManager em = PersistenceUtil.getEntityManager();

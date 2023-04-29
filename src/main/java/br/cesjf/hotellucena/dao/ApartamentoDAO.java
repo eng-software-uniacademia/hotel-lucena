@@ -8,12 +8,8 @@ import br.cesjf.hotellucena.util.PersistenceUtil;
 
 public class ApartamentoDAO {
 
-    public static final ApartamentoDAO usuarioDAO = new ApartamentoDAO();
+    public final ApartamentoDAO usuarioDAO = new ApartamentoDAO();
 
-    public static ApartamentoDAO getInstance() {
-        return usuarioDAO;
-    }
-    
     public Apartamento buscar(String nome) {
         EntityManager em = PersistenceUtil.getEntityManager();
         Query query = em.createQuery("select a from Apartamento a where a.name =:nome ");
