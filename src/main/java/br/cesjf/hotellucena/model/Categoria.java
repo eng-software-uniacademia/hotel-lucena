@@ -110,15 +110,11 @@ public class Categoria implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Categoria)) {
             return false;
         }
         Categoria other = (Categoria) object;
-        if ((this.codigoCategoria == null && other.codigoCategoria != null) || (this.codigoCategoria != null && !this.codigoCategoria.equals(other.codigoCategoria))) {
-            return false;
-        }
-        return true;
+        return (this.codigoCategoria != null || other.codigoCategoria == null) && (this.codigoCategoria == null || this.codigoCategoria.equals(other.codigoCategoria));
     }
 
     @Override

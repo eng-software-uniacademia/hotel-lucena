@@ -90,15 +90,11 @@ public class Apartamento implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Apartamento)) {
             return false;
         }
         Apartamento other = (Apartamento) object;
-        if ((this.idApartamento == null && other.idApartamento != null) || (this.idApartamento != null && !this.idApartamento.equals(other.idApartamento))) {
-            return false;
-        }
-        return true;
+        return (this.idApartamento != null || other.idApartamento == null) && (this.idApartamento == null || this.idApartamento.equals(other.idApartamento));
     }
 
     @Override
