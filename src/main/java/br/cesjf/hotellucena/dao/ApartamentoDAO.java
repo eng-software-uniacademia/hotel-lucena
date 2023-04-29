@@ -64,7 +64,6 @@ public class ApartamentoDAO {
         try {
             usuario = em.merge(usuario);
             em.getTransaction().commit();
-            System.out.println("Registro Apartamento gravado com sucesso");
         } catch (Exception e) {
             e.printStackTrace();
         }

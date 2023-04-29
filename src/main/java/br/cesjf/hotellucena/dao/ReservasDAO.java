@@ -77,7 +77,6 @@ public class ReservasDAO {
         try {
             reserva = em.merge(reserva);
             em.getTransaction().commit();
-            System.out.println("Registro Reservas gravado com sucesso");
         } catch (Exception e) {
             e.printStackTrace();
         }

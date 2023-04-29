@@ -52,7 +52,6 @@ public class CategoriaDAO {
         try {
             usuario = em.merge(usuario);
             em.getTransaction().commit();
-            System.out.println("Registro Categoria gravado com sucesso");
         } catch (Exception e) {
             e.printStackTrace();
         }

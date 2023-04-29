@@ -41,7 +41,7 @@ public class ConsultasReservasBean {
 
     //Métodos dos botões
     @SuppressWarnings("unused")
-    public void save() {
+    public void add() {
         Reservas r = new Reservas();
         Duration duracao = Duration.between(reserva.getDataEntrada().toInstant(), reserva.getDataSaida().toInstant());
         /*reservas = new ReservasDAO().buscarAtivos();
@@ -65,7 +65,6 @@ public class ConsultasReservasBean {
         } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro!", "Data selecionada inválida"));
         }
-        //}
     }
 
     public void exclude() {

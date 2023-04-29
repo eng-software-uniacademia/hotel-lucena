@@ -12,12 +12,13 @@ public class PersistenceUtil {
     private static final ThreadLocal<EntityManager> MANAGER = new ThreadLocal<>();
     private static Session session;
 
+    private PersistenceUtil() { }
+
     static {
         if (FACTORY == null) {
             try {
                 FACTORY = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
-            } catch (Throwable e) {
-                System.out.println("A criacao o do EntityManagerFactory falhou: " + e);
+            } catch (Exception e) {
                 throw new ExceptionInInitializerError(e);
             }
         }

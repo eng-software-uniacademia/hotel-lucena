@@ -52,7 +52,6 @@ public class UsuariosDAO {
         try {
             usuario = em.merge(usuario);
             em.getTransaction().commit();
-            System.out.println("Registro Usuarios gravado com sucesso");
         } catch (Exception e) {
             e.printStackTrace();
         }

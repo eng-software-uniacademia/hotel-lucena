@@ -36,7 +36,7 @@ public class CategoriaBean {
     List<Categoria> categorias = new CategoriaDAO().buscarTodas();
 
     //Métodos dos botões
-    public void save() {
+    public void add() {
         new CategoriaDAO().persistir(categoria);
         categorias = new CategoriaDAO().buscarTodas();
         categoria = new Categoria();

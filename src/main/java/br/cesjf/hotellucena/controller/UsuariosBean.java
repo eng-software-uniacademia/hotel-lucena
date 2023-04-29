@@ -38,7 +38,7 @@ public class UsuariosBean {
     List<Usuarios> usuarios = new UsuariosDAO().buscarTodas();
 
     //Métodos dos botões 
-    public void save() {
+    public void add() {
         new UsuariosDAO().persistir(usuario);
         usuarios = new UsuariosDAO().buscarTodas();
         usuario = new Usuarios();

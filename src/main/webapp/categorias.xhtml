@@ -9,7 +9,7 @@
         <br/>
         <h:form id="formPrincipal">
            
-            <div align="center">
+            <div>
                 <p:dataTable var="lista" value="#{categoriasBean.categorias}"
                              id="tabelaActivity" emptyMessage="Nenhum registro encontrado"
                              paginatorTemplate="{RowsPerPageDropdown} {CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
@@ -56,7 +56,7 @@
                 <p:commandButton icon="ui-icon-plus" value="Novo" onclick="PF('record').show();">  
                 </p:commandButton> 
             </p:column>
-            <div align="center">
+            <div>
                 <h3>Exportar dados da página</h3>
 
                 <h:commandLink id="excel">

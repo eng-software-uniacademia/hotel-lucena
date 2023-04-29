@@ -37,7 +37,7 @@ public class ConsultaApartamentoBean {
 
     //Métodos dos botões
     @SuppressWarnings("unused")
-    public void save() {
+    public void add() {
         new ApartamentoDAO().persistir(apartamento);
         apartamentos = new ApartamentoDAO().buscarTodas();
         apartamento = new Apartamento();
