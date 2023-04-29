@@ -9,12 +9,9 @@ import java.util.Date;
 
 public class ReservasDAO {
 
-    public static ReservasDAO reservaDAO;
+    public static final ReservasDAO reservaDAO = new ReservasDAO();
 
     public static ReservasDAO getInstance() {
-        if (reservaDAO == null) {
-            reservaDAO = new ReservasDAO();
-        }
         return reservaDAO;
     }
 
@@ -40,7 +37,7 @@ public class ReservasDAO {
         query.setParameter("nome", nome);
 
         List<Reservas> reservas = query.getResultList();
-        if (reservas != null && reservas.size() > 0) {
+        if (reservas != null && !reservas.isEmpty()) {
             return reservas.get(0);
         }
 

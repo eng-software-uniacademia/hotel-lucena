@@ -8,12 +8,9 @@ import br.cesjf.hotellucena.util.PersistenceUtil;
 
 public class CategoriaDAO {
 
-    public static CategoriaDAO usuarioDAO;
+    public static final CategoriaDAO usuarioDAO = new CategoriaDAO();
 
     public static CategoriaDAO getInstance() {
-        if (usuarioDAO == null) {
-            usuarioDAO = new CategoriaDAO();
-        }
         return usuarioDAO;
     }
 
@@ -23,7 +20,7 @@ public class CategoriaDAO {
         query.setParameter("nome", nome);
 
         List<Categoria> categoria = query.getResultList();
-        if (categoria != null && categoria.size() > 0) {
+        if (categoria != null && !categoria.isEmpty()) {
             return categoria.get(0);
         }
 

@@ -8,12 +8,9 @@ import br.cesjf.hotellucena.util.PersistenceUtil;
 
 public class ApartamentoDAO {
 
-    public static ApartamentoDAO usuarioDAO;
+    public static final ApartamentoDAO usuarioDAO = new ApartamentoDAO();
 
     public static ApartamentoDAO getInstance() {
-        if (usuarioDAO == null) {
-            usuarioDAO = new ApartamentoDAO();
-        }
         return usuarioDAO;
     }
     
@@ -23,7 +20,7 @@ public class ApartamentoDAO {
         query.setParameter("nome", nome);
 
         List<Apartamento> apartamento = query.getResultList();
-        if (apartamento != null && apartamento.size() > 0) {
+        if (apartamento != null && !apartamento.isEmpty()) {
             return apartamento.get(0);
         }
 

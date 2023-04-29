@@ -160,15 +160,11 @@ public class Reservas implements IServicosExtras, Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Reservas)) {
             return false;
         }
         Reservas other = (Reservas) object;
-        if ((this.codigoReserva == null && other.codigoReserva != null) || (this.codigoReserva != null && !this.codigoReserva.equals(other.codigoReserva))) {
-            return false;
-        }
-        return true;
+        return (this.codigoReserva != null || other.codigoReserva == null) && (this.codigoReserva == null || this.codigoReserva.equals(other.codigoReserva));
     }
 
     @Override
@@ -226,33 +222,11 @@ public class Reservas implements IServicosExtras, Serializable {
     }
 
     public int totalOcupados() {
-
-        int total = 0;
-
-        List<Reservas> reservas = new ReservasDAO().buscarAtivos();
-
-        for (Object r : reservas) {
-            total += 1;
-        }
-
-        return total;
-
+        return new ReservasDAO().buscarAtivos().size();
     }
 
     public int totalQuartos() {
-
-        int total = 0;
-
-        List<Apartamento> aps = new ApartamentoDAO().buscarTodas();
-
-        for (Object r : aps) {
-
-            total += 1;
-
-        }
-
-        return total;
-
+        return new ApartamentoDAO().buscarTodas().size();
     }
 
     public int totalReservasHoje() {
