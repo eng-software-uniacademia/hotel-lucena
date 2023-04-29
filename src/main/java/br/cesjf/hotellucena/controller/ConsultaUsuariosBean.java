@@ -7,7 +7,6 @@ package br.cesjf.hotellucena.controller;
 
 import br.cesjf.hotellucena.dao.UsuariosDAO;
 import br.cesjf.hotellucena.model.Usuarios;
-import java.util.ArrayList;
 
 import com.lowagie.text.BadElementException;
 import com.lowagie.text.Document;
@@ -30,18 +29,12 @@ import org.apache.poi.ss.usermodel.IndexedColors;
  * @author tassio
  */
 @ManagedBean(name = "consultaUsuariosBean")
+@SuppressWarnings("unused")
 @SessionScoped
 public class ConsultaUsuariosBean {
 
     Usuarios usuario = new Usuarios();
-
-    List usuarios = new ArrayList();
-
-    //construtor
-    public ConsultaUsuariosBean() {
-        usuarios = new UsuariosDAO().buscarTodas();
-        usuario = new Usuarios();
-    }
+    List<Usuarios> usuarios = new UsuariosDAO().buscarTodas();
 
     //getters and setters
     public Usuarios getUsuarios() {
@@ -50,14 +43,6 @@ public class ConsultaUsuariosBean {
 
     public void setUsuarios(Usuarios usuario) {
         this.usuario = usuario;
-    }
-
-    public List getUsuarioss() {
-        return usuarios;
-    }
-
-    public void setUsuarioss(List usuarios) {
-        this.usuarios = usuarios;
     }
 
     public void postProcessXLS(Object document) {

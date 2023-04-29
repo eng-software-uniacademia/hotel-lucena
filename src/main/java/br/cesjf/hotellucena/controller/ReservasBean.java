@@ -7,7 +7,7 @@ package br.cesjf.hotellucena.controller;
 
 import br.cesjf.hotellucena.dao.ReservasDAO;
 import br.cesjf.hotellucena.model.Reservas;
-import java.util.ArrayList;
+
 import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;
 
@@ -34,18 +34,12 @@ import org.apache.poi.ss.usermodel.IndexedColors;
  * @author tassio
  */
 @ManagedBean(name = "reservasBean")
+@SuppressWarnings("unused")
 @ViewScoped
 public class ReservasBean {
-
     Reservas reserva = new Reservas();
+    List<Reservas> reservas = new ReservasDAO().buscarAtivos();
 
-    List reservas = new ArrayList();
-
-    //construtor
-    public ReservasBean() {
-        reservas = new ReservasDAO().buscarAtivos();
-        reserva = new Reservas();
-    }
 
     //Métodos dos botões 
     public void record(ActionEvent actionEvent) {
@@ -60,7 +54,7 @@ public class ReservasBean {
             } else
          */
         if (!duracao.isNegative() && !duracao.isZero()) {
-            Double valor = r.camaExtra(reserva);
+            double valor = r.camaExtra(reserva);
             if (valor != 0.0) {
                 reserva.setValorPago(valor);
                 new ReservasDAO().persistir(reserva);
@@ -102,14 +96,6 @@ public class ReservasBean {
         this.reserva = reserva;
     }
 
-    public List getReservass() {
-        return reservas;
-    }
-
-    public void setReservass(List reservas) {
-        this.reservas = reservas;
-    }
-
     public void postProcessXLS(Object document) {
         HSSFWorkbook wb = (HSSFWorkbook) document;
         HSSFSheet sheet = wb.getSheetAt(0);
@@ -126,20 +112,18 @@ public class ReservasBean {
         }
     }
 
-    public void preProcessPDF(Object document) throws IOException, BadElementException, DocumentException {
+    public void preProcessPDF(Object document) throws IOException, DocumentException {
         Document pdf = (Document) document;
         pdf.open();
         pdf.setPageSize(PageSize.A4);
     }
 
     public List<Reservas> buscarReservasUsuario(int id) {
-        reservas = (List) new ReservasDAO().buscarReservas(id);
-        return reservas;
+        return new ReservasDAO().buscarReservas(id);
     }
 
     public List<Reservas> buscarReservasApartamento(int id) {
-        reservas = (List) new ReservasDAO().buscarReservasApartamento(id);
-        return reservas;
+        return new ReservasDAO().buscarReservasApartamento(id);
     }
 
 }

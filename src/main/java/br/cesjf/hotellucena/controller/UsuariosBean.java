@@ -7,7 +7,7 @@ package br.cesjf.hotellucena.controller;
 
 import br.cesjf.hotellucena.dao.UsuariosDAO;
 import br.cesjf.hotellucena.model.Usuarios;
-import java.util.ArrayList;
+
 import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;
 
@@ -31,18 +31,11 @@ import org.apache.poi.ss.usermodel.IndexedColors;
  * @author tassio
  */
 @ManagedBean(name = "usuariosBean")
+@SuppressWarnings("unused")
 @ViewScoped
 public class UsuariosBean {
-
     Usuarios usuario = new Usuarios();
-
-    List usuarios = new ArrayList();
-
-    //construtor
-    public UsuariosBean() {
-        usuarios = new UsuariosDAO().buscarTodas();
-        usuario = new Usuarios();
-    }
+    List<Usuarios> usuarios = new UsuariosDAO().buscarTodas();
 
     //Métodos dos botões 
     public void record(ActionEvent actionEvent) {
@@ -66,14 +59,6 @@ public class UsuariosBean {
         this.usuario = usuario;
     }
 
-    public List getUsuarioss() {
-        return usuarios;
-    }
-
-    public void setUsuarioss(List usuarios) {
-        this.usuarios = usuarios;
-    }
-
     public void postProcessXLS(Object document) {
         HSSFWorkbook wb = (HSSFWorkbook) document;
         HSSFSheet sheet = wb.getSheetAt(0);
@@ -90,7 +75,7 @@ public class UsuariosBean {
         }
     }
 
-    public void preProcessPDF(Object document) throws IOException, BadElementException, DocumentException {
+    public void preProcessPDF(Object document) throws IOException, DocumentException {
         Document pdf = (Document) document;
         pdf.open();
         pdf.setPageSize(PageSize.A4);

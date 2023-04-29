@@ -33,18 +33,11 @@ import org.apache.poi.ss.usermodel.FillPatternType;
 @ManagedBean(name = "apartamentosBean")
 @ViewScoped
 public class ApartamentoBean {
-
     Apartamento apartamento = new Apartamento();
+    List<Apartamento> apartamentos = new ApartamentoDAO().buscarTodas();
 
-    List apartamentos = new ArrayList();
-
-    //construtor
-    public ApartamentoBean() {
-        apartamentos = new ApartamentoDAO().buscarTodas();
-        apartamento = new Apartamento();
-    }
-
-    //Métodos dos botões 
+    //Métodos dos botões
+    @SuppressWarnings("unused")
     public void record(ActionEvent actionEvent) {
         new ApartamentoDAO().persistir(apartamento);
         apartamentos = new ApartamentoDAO().buscarTodas();
@@ -66,14 +59,6 @@ public class ApartamentoBean {
         this.apartamento = apartamento;
     }
 
-    public List getApartamentos() {
-        return apartamentos;
-    }
-
-    public void setApartamentos(List apartamentos) {
-        this.apartamentos = apartamentos;
-    }
-
     public void postProcessXLS(Object document) {
         HSSFWorkbook wb = (HSSFWorkbook) document;
         HSSFSheet sheet = wb.getSheetAt(0);
@@ -90,10 +75,9 @@ public class ApartamentoBean {
         }
     }
 
-    public void preProcessPDF(Object document) throws IOException, BadElementException, DocumentException {
+    public void preProcessPDF(Object document) throws IOException, DocumentException {
         Document pdf = (Document) document;
         pdf.open();
         pdf.setPageSize(PageSize.A4);
     }
-
 }

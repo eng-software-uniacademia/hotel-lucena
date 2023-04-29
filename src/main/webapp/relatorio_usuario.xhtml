@@ -49,11 +49,9 @@
                     </p:column>
 
                     <p:column headerText="Data Saída" sortBy="#{lista.dataSaida}" filterBy="#{lista.dataSaida}">
-                        <center>
-                            <h:outputText value="#{lista.dataSaida}" >
-                                <f:convertDateTime pattern="dd/MM/yyyy" />
-                            </h:outputText>
-                        </center>
+                        <h:outputText value="#{lista.dataSaida}" >
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </h:outputText>
                     </p:column>
                     <p:column headerText="Número de Hospedes" sortBy="#{lista.numeroHospedes}" filterBy="#{lista.numeroHospedes}">
 

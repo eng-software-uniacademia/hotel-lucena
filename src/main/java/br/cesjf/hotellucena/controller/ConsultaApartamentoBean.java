@@ -7,7 +7,7 @@ package br.cesjf.hotellucena.controller;
 
 import br.cesjf.hotellucena.dao.ApartamentoDAO;
 import br.cesjf.hotellucena.model.Apartamento;
-import java.util.ArrayList;
+
 import javax.faces.event.ActionEvent;
 
 import com.lowagie.text.BadElementException;
@@ -36,15 +36,10 @@ public class ConsultaApartamentoBean {
 
     Apartamento apartamento = new Apartamento();
 
-    List apartamentos = new ArrayList();
+    List<Apartamento> apartamentos = new ApartamentoDAO().buscarTodas();
 
-    //construtor
-    public ConsultaApartamentoBean() {
-        apartamentos = new ApartamentoDAO().buscarTodas();
-        apartamento = new Apartamento();
-    }
-
-    //Métodos dos botões 
+    //Métodos dos botões
+    @SuppressWarnings("unused")
     public void record(ActionEvent actionEvent) {
         new ApartamentoDAO().persistir(apartamento);
         apartamentos = new ApartamentoDAO().buscarTodas();
@@ -64,14 +59,6 @@ public class ConsultaApartamentoBean {
 
     public void setApartamento(Apartamento apartamento) {
         this.apartamento = apartamento;
-    }
-
-    public List getApartamentos() {
-        return apartamentos;
-    }
-
-    public void setApartamentos(List apartamentos) {
-        this.apartamentos = apartamentos;
     }
 
     public void postProcessXLS(Object document) {

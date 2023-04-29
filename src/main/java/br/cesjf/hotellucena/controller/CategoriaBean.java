@@ -7,7 +7,7 @@ package br.cesjf.hotellucena.controller;
 
 import br.cesjf.hotellucena.dao.CategoriaDAO;
 import br.cesjf.hotellucena.model.Categoria;
-import java.util.ArrayList;
+
 import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;
 
@@ -36,15 +36,10 @@ public class CategoriaBean {
 
     Categoria categoria = new Categoria();
 
-    List categorias = new ArrayList();
+    List<Categoria> categorias = new CategoriaDAO().buscarTodas();
 
-    //construtor
-    public CategoriaBean() {
-        categorias = new CategoriaDAO().buscarTodas();
-        categoria = new Categoria();
-    }
-
-    //Métodos dos botões 
+    //Métodos dos botões
+    @SuppressWarnings("unused")
     public void record(ActionEvent actionEvent) {
         new CategoriaDAO().persistir(categoria);
         categorias = new CategoriaDAO().buscarTodas();
@@ -66,14 +61,6 @@ public class CategoriaBean {
         this.categoria = categoria;
     }
 
-    public List getCategorias() {
-        return categorias;
-    }
-
-    public void setCategorias(List categorias) {
-        this.categorias = categorias;
-    }
-
     public void postProcessXLS(Object document) {
         HSSFWorkbook wb = (HSSFWorkbook) document;
         HSSFSheet sheet = wb.getSheetAt(0);
@@ -90,7 +77,7 @@ public class CategoriaBean {
         }
     }
 
-    public void preProcessPDF(Object document) throws IOException, BadElementException, DocumentException {
+    public void preProcessPDF(Object document) throws IOException, DocumentException {
         Document pdf = (Document) document;
         pdf.open();
         pdf.setPageSize(PageSize.A4);
