@@ -7,11 +7,8 @@ package br.cesjf.hotellucena.controller;
 
 import br.cesjf.hotellucena.dao.ReservasDAO;
 import br.cesjf.hotellucena.model.Reservas;
-import com.lowagie.text.BadElementException;
 import com.lowagie.text.Document;
-import com.lowagie.text.DocumentException;
 import com.lowagie.text.PageSize;
-import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -44,14 +41,6 @@ public class ConsultasReservasBean {
     public void add() {
         Reservas r = new Reservas();
         Duration duracao = Duration.between(reserva.getDataEntrada().toInstant(), reserva.getDataSaida().toInstant());
-        /*reservas = new ReservasDAO().buscarAtivos();
-        for (Object ap : reservas) {
-            Reservas res = (Reservas) ap;
-            Duration resagenda = Duration.between(res.getDataEntrada().toInstant(), res.getDataSaida().toInstant());
-            if (res.getApartamentocodigoApartamento().getIdApartamento().equals(reserva.getApartamentocodigoApartamento().getIdApartamento()) && duracao.equals(resagenda)) {
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro!", "Quarto inválida nesta data"));
-            } else
-         */
         if (!duracao.isNegative() && !duracao.isZero()) {
             double valor = r.camaExtra(reserva);
             if (valor != 0.0) {
@@ -111,7 +100,7 @@ public class ConsultasReservasBean {
         }
     }
 
-    public void preProcessPDF(Object document) throws IOException, BadElementException, DocumentException {
+    public void preProcessPDF(Object document) {
         Document pdf = (Document) document;
         pdf.open();
         pdf.setPageSize(PageSize.A4);

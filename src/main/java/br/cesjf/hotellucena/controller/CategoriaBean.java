@@ -9,9 +9,7 @@ import br.cesjf.hotellucena.dao.CategoriaDAO;
 import br.cesjf.hotellucena.model.Categoria;
 import javax.faces.bean.ViewScoped;
 import com.lowagie.text.Document;
-import com.lowagie.text.DocumentException;
 import com.lowagie.text.PageSize;
-import java.io.IOException;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import org.apache.poi.hssf.usermodel.HSSFCell;
@@ -73,7 +71,7 @@ public class CategoriaBean {
         }
     }
 
-    public void preProcessPDF(Object document) throws IOException, DocumentException {
+    public void preProcessPDF(Object document) {
         Document pdf = (Document) document;
         pdf.open();
         pdf.setPageSize(PageSize.A4);

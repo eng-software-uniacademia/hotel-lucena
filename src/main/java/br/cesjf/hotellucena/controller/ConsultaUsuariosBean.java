@@ -4,15 +4,10 @@
  * and open the template in the editor.
  */
 package br.cesjf.hotellucena.controller;
-
 import br.cesjf.hotellucena.dao.UsuariosDAO;
 import br.cesjf.hotellucena.model.Usuarios;
-
-import com.lowagie.text.BadElementException;
 import com.lowagie.text.Document;
-import com.lowagie.text.DocumentException;
 import com.lowagie.text.PageSize;
-import java.io.IOException;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -61,7 +56,7 @@ public class ConsultaUsuariosBean {
         }
     }
 
-    public void preProcessPDF(Object document) throws IOException, BadElementException, DocumentException {
+    public void preProcessPDF(Object document) {
         Document pdf = (Document) document;
         pdf.open();
         pdf.setPageSize(PageSize.A4);
