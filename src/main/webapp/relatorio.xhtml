@@ -7,28 +7,26 @@
     <ui:define name="content">
         <h2 class="page-header">Relatório do Hotel</h2>
         <br/>
-        <center>
-            <h:form>
-                <h:panelGrid columns="2" cellpadding="10">
-                    <h:outputLabel value="Número total de quartos:" styleClass="panelGridLabel" />
-                    <h:outputText value="#{reservasBean.reservas.totalQuartos()}" />
+        <h:form>
+            <h:panelGrid columns="2" cellpadding="10">
+                <h:outputLabel value="Número total de quartos:" styleClass="panelGridLabel" />
+                <h:outputText value="#{reservasBean.reservas.totalQuartos()}" />
 
-                    <h:outputLabel value="Número de quartos ocupados:" styleClass="panelGridLabel" />
-                    <h:outputText value="#{reservasBean.reservas.totalOcupados()}" />                    
-                    
-                    <h:outputLabel value="Número de hospedes total do mês:" styleClass="panelGridLabel" />
-                    <h:outputText value="#{reservasBean.reservas.totalHospedes()}" />                                        
-                    
-                    <h:outputLabel value="Número de reservas com entrada na data atual:" styleClass="panelGridLabel" />
-                    <h:outputText value="#{reservasBean.reservas.totalReservasHoje()}" /> 
-                    
-                    <h:outputLabel value="Valor total recebido no mês:" styleClass="panelGridLabel" />
-                    <h:outputText value="#{reservasBean.reservas.totalRecebido()}" >
-                        <f:convertNumber currencyCode="BRL" type="currency" />
-                    </h:outputText>
+                <h:outputLabel value="Número de quartos ocupados:" styleClass="panelGridLabel" />
+                <h:outputText value="#{reservasBean.reservas.totalOcupados()}" />
 
-                </h:panelGrid>
-            </h:form>
-        </center>
+                <h:outputLabel value="Número de hospedes total do mês:" styleClass="panelGridLabel" />
+                <h:outputText value="#{reservasBean.reservas.totalHospedes()}" />
+
+                <h:outputLabel value="Número de reservas com entrada na data atual:" styleClass="panelGridLabel" />
+                <h:outputText value="#{reservasBean.reservas.totalReservasHoje()}" />
+
+                <h:outputLabel value="Valor total recebido no mês:" styleClass="panelGridLabel" />
+                <h:outputText value="#{reservasBean.reservas.totalRecebido()}" >
+                    <f:convertNumber currencyCode="BRL" type="currency" />
+                </h:outputText>
+
+            </h:panelGrid>
+        </h:form>
     </ui:define>
 </ui:composition>
