@@ -5,7 +5,7 @@
  */
 package br.cesjf.hotellucena.model;
 
-import br.cesjf.hotellucena.decorator.ServicosExtras;
+import br.cesjf.hotellucena.decorator.IServicosExtras;
 import br.cesjf.hotellucena.dao.ApartamentoDAO;
 import br.cesjf.hotellucena.dao.ReservasDAO;
 import java.io.Serializable;
@@ -42,7 +42,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Reservas.findByNumeroHospedes", query = "SELECT r FROM Reservas r WHERE r.numeroHospedes = :numeroHospedes"),
     @NamedQuery(name = "Reservas.findByStatus", query = "SELECT r FROM Reservas r WHERE r.status = :status"),
     @NamedQuery(name = "Reservas.findByValorPago", query = "SELECT r FROM Reservas r WHERE r.valorPago = :valorPago")})
-public class Reservas extends ServicosExtras implements Serializable {
+public class Reservas implements IServicosExtras, Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -177,7 +177,7 @@ public class Reservas extends ServicosExtras implements Serializable {
     }
 
     @Override
-    public Double camaExtra(Reservas reserva) {
+    public double camaExtra(Reservas reserva) {
         double total;
 
         if (reserva.getNumeroHospedes() <= reserva.getApartamentocodigoApartamento().getCategoriacodigoCategoria().getCapacidade()) {
@@ -229,7 +229,6 @@ public class Reservas extends ServicosExtras implements Serializable {
 
         int total = 0;
 
-        Reservas reserva = new Reservas();
         List<Reservas> reservas = new ReservasDAO().buscarAtivos();
 
         for (Object r : reservas) {
@@ -244,7 +243,6 @@ public class Reservas extends ServicosExtras implements Serializable {
 
         int total = 0;
 
-        Apartamento apartamento = new Apartamento();
         List<Apartamento> aps = new ApartamentoDAO().buscarTodas();
 
         for (Object r : aps) {

@@ -11,8 +11,8 @@ import br.cesjf.hotellucena.model.Reservas;
  *
  * @author tassio
  */
-public abstract class ServicosExtras {
+public interface IServicosExtras {
     
-    public abstract Double camaExtra(Reservas reserva);
+    double camaExtra(Reservas reserva);
     
 }
