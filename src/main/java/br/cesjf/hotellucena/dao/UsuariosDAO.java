@@ -49,12 +49,8 @@ public class UsuariosDAO {
     public Usuarios persistir(Usuarios usuario) {
         EntityManager em = PersistenceUtil.getEntityManager();
         em.getTransaction().begin();
-        try {
-            usuario = em.merge(usuario);
-            em.getTransaction().commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        usuario = em.merge(usuario);
+        em.getTransaction().commit();
         return usuario;
     }
 

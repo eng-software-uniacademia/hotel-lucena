@@ -74,12 +74,8 @@ public class ReservasDAO {
     public Reservas persistir(Reservas reserva) {
         EntityManager em = PersistenceUtil.getEntityManager();
         em.getTransaction().begin();
-        try {
-            reserva = em.merge(reserva);
-            em.getTransaction().commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        reserva = em.merge(reserva);
+        em.getTransaction().commit();
         return reserva;
     }
 
